@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="photo.css" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <title>Photo</title>
+    </head>
+    <body>
+        <!-- <button id="getJSON">Get Photographers</button> -->
+        <header id="header" aria-hidden="false">
+            <a href="photo.html"
+                ><img src="./fisheye-logo.png" alt="Fisheye home page"
+            /></a>
+            <!-- <a
+                href="#homepage-main"
+                class="interactive-nav"
+                title="Passer au contenu"
+                id="link-content"
+                >Passer au contenu</a
+            > -->
+            <ul id="allTags"></ul>
+            <h1>Nos photographes</h1>
+        </header>
+        <section class="photographers">
+            <ul class="cards" id="output"></ul>
+        </section>
+    </body>
+    <script src="Cphotographers.js" defer></script>
+    <script src="main.js" defer></script>
+</html>
