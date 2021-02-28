@@ -30,15 +30,18 @@ fetch(url)
         })
         console.log(photographers)
 
-        // console.log(resdata)
-        // console.log(photographers[3].tags)
         let output = ""
         let allTags = ""
+
         photographers.forEach((photographer) => {
+            tags.push(...photographer.tags)
             output += photographer.display()
-            allTags += photographer.searchTags()
-            console.log(allTags)
         })
+        tags = new Set(tags)
+        allTags = [...tags]
+            .map((tag) => `<li class='photographer-tag'>#${tag}</li>`)
+            .join("")
+        console.log(tags)
 
         document.getElementById("allTags").innerHTML = allTags
         document.getElementById("output").innerHTML = output

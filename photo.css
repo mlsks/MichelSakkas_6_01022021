@@ -206,11 +206,15 @@ li.photographer-tag {
 }
 
 #allTags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     color: #901c1c;
     font-size: smaller;
     font-weight: 500;
     padding: 5px;
-    border: 1px solid #c2c2c2;
+    border: none;
     border-radius: 14px;
     margin: auto;
     margin-top: 3rem;

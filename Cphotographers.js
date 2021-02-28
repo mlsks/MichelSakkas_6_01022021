@@ -13,6 +13,7 @@ class Photographer {
         this.price = price
     }
     display() {
+        // let topTags = ""
         const tag = this.tags
             .map((tag) => `<li class='photographer-tag'>#${tag}</li>`)
             // remove comma
@@ -44,25 +45,7 @@ class Photographer {
                 </div> 
             </div>
         </li>
+        
         `
     }
-    searchTags() {
-        let getTags = this.tags.join(" ")
-
-        return `
-            ${getTags}
-            `
-    }
 }
-
-// `<li class='main-tag'>#${tag}</li>`
-
-// function objectLength(obj) {
-//     let result = ""
-//     for (let prop in obj) {
-//         if (obj.hasOwnProperty(prop)) {
-//             result++
-//         }
-//     }
-//     return result
-// }
