@@ -1,4 +1,6 @@
 "use strict"
+/* eslint-disable indent */
+
 //  Définition de la classe "Photographer"
 // eslint-disable-next-line no-unused-vars
 class Photographer {
@@ -13,18 +15,16 @@ class Photographer {
         this.price = price
     }
     display() {
-        // let topTags = ""
-        const tag = this.tags
-            .map((tag) => `<li class='photographer-tag'>#${tag}</li>`)
-            // remove comma
-            .join("")
-
         return `
         <li class='cards__item'> 
             <div class='card'>
-                <a href="photographer.html?id=${this.id}" title="${this.name}" class="card__a"> 
+                <a href="photographer.html?id=${this.id}" title="${
+            this.name
+        }"  class="card__a"> 
                 <div class='card__image'>
-                    <img src="photos/${this.portrait}" class="img__card"> 
+                    <img src="photos/${this.portrait}" class="img__card" alt="${
+            this.name
+        }"> 
                 </div> 
                 <div class='card__content'>
                     <div class='card__title'>
@@ -40,7 +40,12 @@ class Photographer {
                     ${this.price}€/jour
                     </p>
                     <ul class="tag">
-                        ${tag}                       
+                    ${this.tags
+                        .map(
+                            (tag) => `<li class='photographer-tag'>#${tag}</li>`
+                        )
+                        .join("")} 
+                                              
                     </ul>
                 </div> 
             </div>

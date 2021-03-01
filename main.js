@@ -2,8 +2,10 @@
 "use strict"
 
 let photographers = []
-// eslint-disable-next-line no-unused-vars
 let tags = []
+let output = ""
+let allTags = ""
+
 const url = "./data.json"
 //  Appel à la fonction pour retourner des données asynchrones (api /json / DB)
 fetch(url)
@@ -28,16 +30,15 @@ fetch(url)
                 )
             )
         })
-        console.log(photographers)
-
-        let output = ""
-        let allTags = ""
+        // console.log(photographers)
 
         photographers.forEach((photographer) => {
-            tags.push(...photographer.tags)
             output += photographer.display()
+            tags.push(...photographer.tags)
         })
+        // console.log(tags)
         tags = new Set(tags)
+
         allTags = [...tags]
             .map((tag) => `<li class='photographer-tag'>#${tag}</li>`)
             .join("")
