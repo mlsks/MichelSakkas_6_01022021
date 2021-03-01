@@ -36,14 +36,21 @@ fetch(url)
             output += photographer.display()
             tags.push(...photographer.tags)
         })
-        // console.log(tags)
+
+        document.getElementById("output").innerHTML = output
+
         tags = new Set(tags)
 
         allTags = [...tags]
-            .map((tag) => `<li class='photographer-tag'>#${tag}</li>`)
+            .map(
+                (tag) => `<li class='photographer-tag' id="${tag}">#${tag}</li>`
+            )
             .join("")
-        console.log(tags)
+
+        console.log(allTags)
 
         document.getElementById("allTags").innerHTML = allTags
-        document.getElementById("output").innerHTML = output
+        document.getElementById("art").addEventListener("click", function () {
+            alert("Portrait")
+        })
     })
