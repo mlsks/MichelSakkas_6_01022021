@@ -15,16 +15,15 @@ class Photographer {
         this.price = price
     }
     display() {
-        return `
+        if (!document.getElementById(this.tags))
+            return `
         <li class='cards__item'> 
             <div class='card'>
-                <a href="photographer.html?id=${this.id}" title="${
-            this.name
-        }"  class="card__a"> 
+                <a href="photographer.html?id=${this.id}" 
+                title="${this.name}"  class="card__a"> 
                 <div class='card__image'>
-                    <img src="photos/${this.portrait}" class="img__card" alt="${
-            this.name
-        }"> 
+                    <img src="photos/${this.portrait}" class="img__card"
+                    alt="${this.name}"> 
                 </div> 
                 <div class='card__content'>
                     <div class='card__title'>
@@ -44,7 +43,7 @@ class Photographer {
                         .map(
                             (tag) => `<li class='photographer-tag'>#${tag}</li>`
                         )
-                        .join("")} 
+                        .join("")}
                                               
                     </ul>
                 </div> 
@@ -52,5 +51,55 @@ class Photographer {
         </li>
         
         `
+        else {
+            document
+                .getElementById("art")
+                .addEventListener("click", function () {
+                    alert("Hello Art !")
+                })
+        }
     }
+
+    // includesTag() {
+    //     if (this.tags.includes("portrait"))
+    //         return `
+    //     <li class='cards__item'>
+    //         <div class='card'>
+    //             <a href="photographer.html?id=${this.id}"
+    //             title="${this.name}"  class="card__a">
+    //             <div class='card__image'>
+    //                 <img src="photos/${this.portrait}" class="img__card"
+    //                 alt="${this.name}">
+    //             </div>
+    //             <div class='card__content'>
+    //                 <div class='card__title'>
+    //                 ${this.name}
+    //                 </div></a>
+    //                 <p class='card__text card__place'>
+    //                 ${this.city}, ${this.country}
+    //                 </p>
+    //                 <p class='card__text card__tagline'>
+    //                 ${this.tagline}
+    //                 </p>
+    //                 <p class='card__text card__price'>
+    //                 ${this.price}€/jour
+    //                 </p>
+    //                 <ul class="tag">
+    //                 ${this.tags
+    //                     .map(
+    //                         (tag) => `<li class='photographer-tag'>#${tag}</li>`
+    //                     )
+    //                     .join("")}
+
+    //                 </ul>
+    //             </div>
+    //         </div>
+    //     </li>
+
+    //     `
+    // }
+
+    // monTest() {
+    //     console.log("Hello mon Test")
+    // }
 }

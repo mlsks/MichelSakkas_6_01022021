@@ -34,6 +34,9 @@ fetch(url)
 
         photographers.forEach((photographer) => {
             output += photographer.display()
+            // &&
+            // photographer.includesTag() &&
+            // photographer.monTest()
             tags.push(...photographer.tags)
         })
 
@@ -41,16 +44,21 @@ fetch(url)
 
         tags = new Set(tags)
 
-        allTags = [...tags]
+        let loopTags = (allTags = [...tags])
+        console.log("loopTags ", loopTags)
+
+        allTags = loopTags
             .map(
-                (tag) => `<li class='photographer-tag' id="${tag}">#${tag}</li>`
+                (tag) =>
+                    `<li class='photographer-tag ${tag}' id="${tag}">#${tag}</li>`
             )
             .join("")
 
-        console.log(allTags)
-
         document.getElementById("allTags").innerHTML = allTags
-        document.getElementById("art").addEventListener("click", function () {
-            alert("Portrait")
-        })
+
+        document
+            .getElementById("portrait")
+            .addEventListener("click", function () {
+                alert("Hello PORTRAIT")
+            })
     })
