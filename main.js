@@ -5,6 +5,7 @@ let photographers = []
 let tags = []
 let output = ""
 let allTags = ""
+let maVar = "art"
 
 const url = "./data.json"
 //  Appel à la fonction pour retourner des données asynchrones (api /json / DB)
@@ -34,8 +35,8 @@ fetch(url)
 
         photographers.forEach((photographer) => {
             output += photographer.display()
+            // && photographer.includesTag()
             // &&
-            // photographer.includesTag() &&
             // photographer.monTest()
             tags.push(...photographer.tags)
         })
