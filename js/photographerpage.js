@@ -98,10 +98,17 @@ class PhotographerPage {
         // Create one array from multidimensioned array
         let merged = [].concat.apply([], tagsNames)
         let uniqueTag = [...new Set(merged)]
-
         console.log("Tags array : " + uniqueTag)
 
-        // By popularity method
+        // Iterate IDs
+        let iterable = thisMedias.map((item) => item.id)
+        console.log("Iterable IDs: " + iterable)
+        let nrOfElements = iterable.length
+        console.log(iterable.indexOf(525834234) + 1)
+
+        console.log("nrOfElements: " + nrOfElements)
+
+        // By popularity Method
         function byPopularity() {
             let displayByPopularity = ""
             for (let i = 0; i < thisMedias.length; i++) {
@@ -113,10 +120,33 @@ class PhotographerPage {
             }
             document.getElementById("gallery").innerHTML = displayByPopularity
         }
-        // Trigger function (first DOM paint)
+        // Trigger function [First DOM Paint]
         byPopularity()
-        // Sorting Methods
-        // By Title
+
+        // Trigger Sorting Elements Tags
+        let sortPopularity = document.getElementById("popularité")
+        let sortTitre = document.getElementById("titre")
+        let sortDate = document.getElementById("date")
+
+        let newElementGallerySorted = document.querySelector("#gallery")
+
+        // Clear Gallery Fragment
+        function clearFragment() {
+            var list = document.getElementById("gallery")
+            while (list.hasChildNodes()) {
+                list.removeChild(list.lastChild)
+            }
+        }
+
+        // Sort by Popularité
+        sortPopularity.addEventListener("click", function () {
+            clearFragment()
+            let newFragment = new DocumentFragment()
+            byPopularity()
+            newElementGallerySorted.appendChild(newFragment)
+        })
+
+        // By Title Method
         function byTitle() {
             let displayByTitle = ""
             for (let i = 0; i < thisMedias.length; i++) {
@@ -135,8 +165,15 @@ class PhotographerPage {
             }
             document.getElementById("gallery").innerHTML = displayByTitle
         }
+        // Sort by Titre
+        sortTitre.addEventListener("click", function () {
+            clearFragment()
+            let newFragment = new DocumentFragment()
+            byTitle()
+            newElementGallerySorted.appendChild(newFragment)
+        })
 
-        //  By Date
+        //  By Date Method
         function byDate() {
             let displayByDate = ""
             for (let i = 0; i < thisMedias.length; i++) {
@@ -147,98 +184,6 @@ class PhotographerPage {
             }
             document.getElementById("gallery").innerHTML = displayByDate
         }
-
-        // By Tag
-        function byTags() {
-            let displayByPopularity = ""
-
-            for (let i = 0; i < thisMedias.length; i++) {
-                thisMedias.sort(function (a, b) {
-                    return new Date(b.date) - new Date(a.date)
-                })
-                displayByPopularity += thisMedias[i].gallery()
-            }
-
-            document.getElementById("gallery").innerHTML = displayByPopularity
-        }
-
-        // console.log(
-        //     uniqueTag[0] == document.getElementsByClassName("allTags")[2].id
-        // )
-        console.log(uniqueTag)
-        // console.log(document.getElementsByClassName("allTags")[2].id)
-
-        document
-            .querySelector(".allTags")
-            .addEventListener("click", function (e) {
-                if (e.target && e.target.nodeName == "LI") {
-                    // List item found!  Output the ID!
-                    console.log("List item ", e.target.id, " was clicked!")
-                    console.log(e.target)
-                    console.log(e.target.id)
-                    // app.filterTag(e.target.id)
-                }
-            })
-
-        document
-            .querySelector(".price")
-            .addEventListener("click", function (e) {
-                if (e.target && e.target.nodeName == "P") {
-                    // List item found!  Output the ID!
-                    console.log(
-                        "List item ",
-                        e.target.innerHTML,
-                        " was clicked!"
-                    )
-                    console.log(e.target)
-                    console.log(e.target.innerHTML)
-                    // app.filterTag(e.target.id)
-                }
-            })
-
-        // ***
-
-        // Trigger Sorting Method
-        let sortPopularity = document.getElementById("popularité")
-        let sortTitre = document.getElementById("titre")
-        let sortDate = document.getElementById("date")
-
-        let sortTags = document.querySelector(".allTags")
-
-        let newElementGallerySorted = document.querySelector("#gallery")
-
-        // Clear Gallery Fragment
-        function clearFragment() {
-            var list = document.getElementById("gallery")
-            while (list.hasChildNodes()) {
-                list.removeChild(list.lastChild)
-            }
-        }
-
-        // Sort by Tags
-        // sortTags.addEventListener("click", function () {
-        //     clearFragment()
-        //     let newFragment = new DocumentFragment()
-        //     byTags()
-        //     newElementGallerySorted.appendChild(newFragment)
-        // })
-
-        // Sort by Popularité
-        sortPopularity.addEventListener("click", function () {
-            clearFragment()
-            let newFragment = new DocumentFragment()
-            byPopularity()
-            newElementGallerySorted.appendChild(newFragment)
-        })
-
-        // Sort by Titre
-        sortTitre.addEventListener("click", function () {
-            clearFragment()
-            let newFragment = new DocumentFragment()
-            byTitle()
-            newElementGallerySorted.appendChild(newFragment)
-        })
-
         // Sort by Date
         sortDate.addEventListener("click", function () {
             clearFragment()
@@ -246,5 +191,7 @@ class PhotographerPage {
             byDate()
             newElementGallerySorted.appendChild(newFragment)
         })
+
+        // ***
     }
 }

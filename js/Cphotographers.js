@@ -62,9 +62,9 @@ class Photographer {
             <div class='card'>
               
                 <div class='card__image'>
-                <img src="photos/${
-                    this.portrait
-                }" class="img__card pointeur" id="mainpix" > 
+                <img src="photos/${this.portrait}" alt="${
+            this.name
+        }" class="img__card pointeur" id="mainpix" > 
                 </div>
 
                 <button class="contactMe">Contactez-moi</button>

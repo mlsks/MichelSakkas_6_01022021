@@ -18,7 +18,6 @@ class Photo {
         let regApply1st, regApply2, tagline
         let reg1 = /\b.jpg/g
         let reg2 = /[_$]/g
-
         if (this.image != null) {
             regApply1st = this.image.replace(reg1, "")
             regApply2 = regApply1st.replace(/([a-z])([A-Z])/g, "$1 $2")
@@ -27,17 +26,19 @@ class Photo {
 
         return `
         <li class="cards__gallery ${this.tags}"> 
-            <div class='card__gallery'>
-                <img src="photos/${this.image}" class="image-gallery">
+            <div class='card__gallery '>
+            <a href="photos/${this.image}" class="" data-lightbox-caption="${tagline}">
+                <img src="photos/${this.image}" class="image-gallery" alt="image ${tagline}">
+            </a>
                 <div class="p_row">
                     <p id="max_text">${tagline}</p>
-                    <p class="price">${this.price}</p>
-                    <p>€&nbsp;</p>
+                    <p class="price">${this.price}€&nbsp;</p>
                     <p class="likes">${this.likes}</p>
-                    <p class="coeur">&#10084;</p>   
+                    <p class="coeur" alt="likes" aria-label="likes">❤</p>   
                 </div>
             </div>
         </li>
+        <!-- Modal -->
         `
     }
 }
@@ -67,18 +68,23 @@ class Video {
         return `
             <li class="cards__gallery ${this.tags}"> 
                 <div class='card__gallery'>
-                    <video  class="image-gallery" autoplay loop>
-                    <source src="photos/${this.video}" type="video/mp4">
+                <a href="photos/${this.video}" class="" data-lightbox-caption="${tagline}">
+                    <video  class="image-gallery" title="video ${tagline}" autoplay loop
+                    onclick="openModal();currentSlide()">
+                    <source src="photos/${this.video}" video" type="video/mp4">
                     </video>
+                 </a>   
                     <div class="p_row">
                         <p id="max_text">${tagline}</p>
-                        <p class="price">${this.price}</p>
-                        <p>€&nbsp;</p>
-                        <p class="likes ${this.likes}">${this.likes}</p>
-                        <p class="coeur">&#10084;</p> 
+                        <p class="price">${this.price}€&nbsp;</p>
+                        <p class="likes ${this.likes}">${this.likes}
+                        <p class="coeur" alt="likes" aria-label="likes">❤</p>
+                        </p>
                     </div>
                 </div>
             </li>
+            <!-- Modal -->
+        
             `
     }
 }
