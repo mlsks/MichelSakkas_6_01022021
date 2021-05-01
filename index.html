@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./css/mainPage.css" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="./css/mainPage.css" />
         <script src="./js/Cphotographers.js" defer></script>
         <script src="./js/main.js" defer></script>
         <title>Fisheye</title>
@@ -13,14 +13,23 @@
         <div id="top"></div>
         <!-- <button id="getJSON">Get Photographers</button> -->
         <header id="header" aria-hidden="false">
-            <a href="index.html" class="logo"
-                ><img
-                    src="./fisheye-logo.svg"
-                    alt="Fisheye home page"
-                    title="Fisheye home page"
-            /></a>
+            <logo>
+                <a href="index.html" class="logo"
+                    ><img
+                        src="./fisheye-logo.svg"
+                        alt="Fisheye home page"
+                        title="Fisheye home page"
+                /></a>
+            </logo>
             <ul id="allTags"></ul>
-            <h1>Nos photographes</h1>
+            <h1>
+                <img
+                    src="./photographers.svg"
+                    id="nosPhotographes"
+                    alt="Nos Photographes"
+                    title="Nos Photographes"
+                />
+            </h1>
         </header>
         <section class="photographers">
             <ul class="cards" id="listePhotographes"></ul>

@@ -25,20 +25,23 @@ class Photo {
         }
 
         return `
+        <div class="gg-container">
         <li class="cards__gallery ${this.tags}"> 
-            <div class='card__gallery '>
-            <a href="photos/${this.image}" class="" data-lightbox-caption="${tagline}">
-                <img src="photos/${this.image}" class="image-gallery" alt="image ${tagline}">
-            </a>
+            <div class='card__gallery'>
+            
+                <div class="gg-box" id="square-dark">
+                    <img src="img/${this.image}" class="image-gallery" alt="image ${tagline}">
+                </div>
+            
                 <div class="p_row">
                     <p id="max_text">${tagline}</p>
                     <p class="price">${this.price}€&nbsp;</p>
                     <p class="likes">${this.likes}</p>
-                    <p class="coeur" alt="likes" aria-label="likes">❤</p>   
+                    <img src="img/coeur.png" alt="coeur rouge" class="coeur"  style="width:20px;height:20px;margin-top: 1.4rem;">   
                 </div>
             </div>
         </li>
-        <!-- Modal -->
+        </div>
         `
     }
 }
@@ -68,12 +71,12 @@ class Video {
         return `
             <li class="cards__gallery ${this.tags}"> 
                 <div class='card__gallery'>
-                <a href="photos/${this.video}" class="" data-lightbox-caption="${tagline}">
+                
                     <video  class="image-gallery" title="video ${tagline}" autoplay loop
                     onclick="openModal();currentSlide()">
-                    <source src="photos/${this.video}" video" type="video/mp4">
+                    <source src="img/${this.video}" video" type="video/mp4">
                     </video>
-                 </a>   
+                    
                     <div class="p_row">
                         <p id="max_text">${tagline}</p>
                         <p class="price">${this.price}€&nbsp;</p>
@@ -82,9 +85,7 @@ class Video {
                         </p>
                     </div>
                 </div>
-            </li>
-            <!-- Modal -->
-        
+            </li>        
             `
     }
 }

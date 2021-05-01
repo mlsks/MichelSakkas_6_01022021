@@ -14,6 +14,7 @@ class Photographer {
         this.tagline = tagline
         this.price = price
     }
+
     // Méthode sur index.html
     display() {
         return `
@@ -22,7 +23,7 @@ class Photographer {
             <a href="photographer.html?id=${this.id}" 
                 title="${this.name}"  class="card__a"> 
                 <div class='card__image'>
-                <img src="photos/${
+                <img src="img/${
                     this.portrait
                 }" class="img__card pointeur" id="${this.id}" name="${
             this.name
@@ -62,12 +63,12 @@ class Photographer {
             <div class='card'>
               
                 <div class='card__image'>
-                <img src="photos/${this.portrait}" alt="${
+                <img src="img/${this.portrait}" alt="${
             this.name
         }" class="img__card pointeur" id="mainpix" > 
                 </div>
 
-                <button class="contactMe">Contactez-moi</button>
+                <button class="contactMe" onclick="openModal()">Contactez-moi</button>
                     
                 <div class='card__content'>
                     <h1 class='card__title'>
@@ -81,7 +82,7 @@ class Photographer {
                     ${this.tagline}
                     </p>
 
-                    <button id="contactMe">Contactez-moi</button>
+                    <button id="contactMe" onclick="openModal()">Contactez-Moi</button>
 
                     <ul class="tag" >
                     ${this.tags
@@ -93,7 +94,28 @@ class Photographer {
                     </ul>
                 </div> 
             </div>
+               
+                        
         </li>
+        <!-- MODAL -->
+        <div class="modal">
+        <div class="backdrop" onclick="closeModal()"></div>
+        <div class="content">
+                <h2>Contactez-moi</h2>
+                <h2>${this.name}</h2>
+                <form action="">
+                    <p>Nom</p>
+                    <input type="text" name="nom" id="nom">
+                    <p>Prénom</p>
+                    <input type="text" name="prenom" id="prenom">
+                    </br>
+                    <button type="submit" onClick="closeModal()">Envoyer</button>
+                </form>
+        
+            <img src="../close.svg" class="close" onclick="closeModal()" />
+        </div>
+        </div>
+        
         `
     }
     // Méthode sur photographer.html
