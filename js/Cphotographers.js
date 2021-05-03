@@ -104,10 +104,23 @@ class Photographer {
                 <h2>Contactez-moi</h2>
                 <h2>${this.name}</h2>
                 <form action="">
-                    <p>Nom</p>
-                    <input type="text" name="nom" id="nom">
-                    <p>Prénom</p>
-                    <input type="text" name="prenom" id="prenom">
+                    <label>Nom</label>
+                    </br>
+                    <input type="text" name="nom" id="nom" required>
+                    </br>
+                    <label>Prénom</label>
+                    </br>
+                    <input type="text" name="prenom" id="prenom" required>
+                    </br>
+                    <label for="email">Email</label>
+                    </br>
+                    <input type="email" id="email"
+                    pattern=".+@globex.com" size="30" required>
+                    </br>
+                    <label>message</label>
+                    </br>
+                    <textarea id="message" cols="35" rows="8" required
+                    placeholder="votre message"></textarea>
                     </br>
                     <button type="submit" onClick="closeModal()">Envoyer</button>
                 </form>

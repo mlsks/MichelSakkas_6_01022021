@@ -11,6 +11,7 @@ window.onload = function () {
     //Instanciation from class PhotographerPage
     let photographerPage = new PhotographerPage()
     photographerPage.display(photographerId)
+    photographerPage.lunch()
 }
 
 class PhotographerPage {
@@ -48,6 +49,7 @@ class PhotographerPage {
             }
             this.medias.push(new MediaFactory(type, resmediaFiltered[i]))
         }
+        this.diaporama = new Diaporama(this.medias)
     }
 
     // DISPLAY Photographer, Likes and Price, and Gallery
@@ -191,7 +193,13 @@ class PhotographerPage {
             byDate()
             newElementGallerySorted.appendChild(newFragment)
         })
-
-        // ***
+    }
+    lunch() {
+        this.diaporama.start()
+        // let that = this
+        setInterval(() => {
+            this.diaporama.next()
+            this.diaporama.display()
+        }, 10000)
     }
 }
