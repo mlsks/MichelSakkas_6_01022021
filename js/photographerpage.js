@@ -94,6 +94,7 @@ class PhotographerPage {
         // DISPLAY Photographer Gallery
 
         let thisMedias = this.medias
+        console.log(thisMedias)
 
         // Unique Tag
         let tagsNames = thisMedias.map((item) => item.tags)
@@ -194,12 +195,13 @@ class PhotographerPage {
             newElementGallerySorted.appendChild(newFragment)
         })
     }
+
     lunch() {
         this.diaporama.start()
         // let that = this
         setInterval(() => {
             this.diaporama.next()
             this.diaporama.display()
-        }, 10000)
+        }, 1000)
     }
 }

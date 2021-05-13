@@ -25,14 +25,10 @@ class Photo {
         }
 
         return `
-        <div class="gg-container">
+        
         <li class="cards__gallery ${this.tags}"> 
             <div class='card__gallery'>
-            
-                <div class="gg-box" id="square-dark">
-                    <img src="img/${this.image}" class="image-gallery" alt="image ${tagline}">
-                </div>
-            
+                    <img src="img/${this.image}" class="image-gallery" id="image-gallery" alt="image ${tagline}">
                 <div class="p_row">
                     <p id="max_text">${tagline}</p>
                     <p class="price">${this.price}€&nbsp;</p>
@@ -41,7 +37,7 @@ class Photo {
                 </div>
             </div>
         </li>
-        </div>
+        
         `
     }
 }
@@ -71,12 +67,9 @@ class Video {
         return `
             <li class="cards__gallery ${this.tags}"> 
                 <div class='card__gallery'>
-                
-                    <video  class="image-gallery" title="video ${tagline}" autoplay loop
-                    onclick="openModal();currentSlide()">
+                    <video  class="image-gallery" title="video ${tagline}" autoplay loop>
                     <source src="img/${this.video}" video" type="video/mp4">
                     </video>
-                    
                     <div class="p_row">
                         <p id="max_text">${tagline}</p>
                         <p class="price">${this.price}€&nbsp;</p>

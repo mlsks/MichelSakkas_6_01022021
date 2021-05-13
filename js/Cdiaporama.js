@@ -1,4 +1,5 @@
 /* eslint-disable indent */
+// eslint-disable-next-line no-unused-vars
 class Diaporama {
     constructor(medias) {
         this.medias = medias
@@ -7,6 +8,7 @@ class Diaporama {
     }
 
     createElement() {
+        // eslint-disable-next-line no-undef
         if (this.medias[this.position] instanceof Photo) {
             this.element = `<img src='img/${
                 this.medias[this.position].image
@@ -49,6 +51,6 @@ class Diaporama {
     display() {
         let lightbox = document.getElementById("diaporama")
         lightbox.innerHTML = this.element
-        // lightbox.classList.add("open")
+        lightbox.classList.add("open")
     }
 }
