@@ -98,7 +98,7 @@ class Photographer {
                         
         </li>
         <!-- MODAL -->
-        <div class="modal">
+        <div class="contactmodal">
         <div class="backdrop" onclick="closeModal()"></div>
         <div class="content">
                 <h2>Contactez-moi</h2>

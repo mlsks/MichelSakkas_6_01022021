@@ -14,7 +14,7 @@ class Photo {
         this.price = props.price
     }
 
-    gallery() {
+    gallery(id) {
         let regApply1st, regApply2, tagline
         let reg1 = /\b.jpg/g
         let reg2 = /[_$]/g
@@ -28,7 +28,7 @@ class Photo {
         
         <li class="cards__gallery ${this.tags}"> 
             <div class='card__gallery'>
-                    <img src="img/${this.image}" class="image-gallery" id="image-gallery" alt="image ${tagline}">
+                    <img src="img/${this.image}"  class="image-gallery" id="image-gallery" alt="image ${tagline}">
                 <div class="p_row">
                     <p id="max_text">${tagline}</p>
                     <p class="price">${this.price}€&nbsp;</p>
@@ -53,7 +53,7 @@ class Video {
         this.price = props.price
     }
 
-    gallery() {
+    gallery(id) {
         let regApply1st, regApply2, tagline
         let reg1 = /\b.mp4/g
         let reg2 = /[_$]/g
@@ -68,7 +68,7 @@ class Video {
             <li class="cards__gallery ${this.tags}"> 
                 <div class='card__gallery'>
                     <video  class="image-gallery" title="video ${tagline}" autoplay loop>
-                    <source src="img/${this.video}" video" type="video/mp4">
+                    <source src="img/${this.video}"  video" type="video/mp4">
                     </video>
                     <div class="p_row">
                         <p id="max_text">${tagline}</p>

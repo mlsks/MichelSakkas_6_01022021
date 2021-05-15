@@ -14,16 +14,14 @@
         <script src="./js/data.js" defer></script>
 
         <script src="./js/formModal.js" defer></script>
-
-        <script src="./js/diaporamaModal.js" defer></script>
         
         <script src="./js/Cphotographers.js" defer></script>
 
         <script src="./js/Cmedias.js" defer></script>
-
-        <script src="./js/Cdiaporama.js" defer></script> 
         
-        <script src="./js/photographerpage.js" defer></script>        
+        <script src="./js/photographerpage.js" defer></script> 
+
+        <script src="./js/Cdiaporama.js" defer></script>
                
     </head>
     <body>
@@ -67,6 +65,18 @@
             <div id="likesPrice">
                 <ul class="cards" id="likes"></ul>
                 <ul class="cards" id="price"></ul>
-            </div>            
+            </div>   
+            <!-- Modale -->
+        <div class="modal" id="modal">
+            <div id="lightbox"></div>
+            <!-- Modal Close -->
+            <span class="closeModal">&times;</span>
+            <!-- Modal Image / Video -->
+            <div class="modal-content" id="lightbox"></div>
+            <!-- Modal Previous -->
+            <span class="slide prev" id="prev">&lt;</span>
+            <!-- Modal Next -->
+            <span class="slide next" id="next">&gt;</span>
+        </div>         
         </body>
 </html>

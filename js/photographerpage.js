@@ -11,13 +11,38 @@ window.onload = function () {
     //Instanciation from class PhotographerPage
     let photographerPage = new PhotographerPage()
     photographerPage.display(photographerId)
-    photographerPage.lunch()
+    // photographerPage.lunch()
+
+    // Modal Diaporama
+    const modalBox = document.getElementById("modal")
+
+    const closeModalDiaporama = document.querySelector(".closeModal")
+
+    // Close button
+    closeModalDiaporama.addEventListener("click", function () {
+        modalBox.classList.remove("show")
+    })
+
+    const nextBtn = document.querySelector(".next")
+    nextBtn.onclick = () => {
+        photographerPage.d.next()
+        // console.log(d)
+    }
+
+    const prevBtn = document.querySelector(".prev")
+    prevBtn.onclick = () => {
+        photographerPage.d.previous()
+    }
 }
 
 class PhotographerPage {
     constructor() {
         this.photographer = null
         this.medias = []
+    }
+
+    startModal(index) {
+        this.d.start(index)
     }
 
     // GETPHOTOGRAPHER METHOD
@@ -49,19 +74,20 @@ class PhotographerPage {
             }
             this.medias.push(new MediaFactory(type, resmediaFiltered[i]))
         }
-        this.diaporama = new Diaporama(this.medias)
+
+        let d = this.diaporama
+        d = new Diaporama(this.medias)
+        console.log(d)
     }
 
     // DISPLAY Photographer, Likes and Price, and Gallery
     display(id) {
         this.getPhotographer(id)
-        document.getElementById(
-            "photographer"
-        ).innerHTML = this.photographer.displayPhotographer()
+        document.getElementById("photographer").innerHTML =
+            this.photographer.displayPhotographer()
 
-        document.getElementById(
-            "price"
-        ).innerHTML = this.photographer.displayPrice()
+        document.getElementById("price").innerHTML =
+            this.photographer.displayPrice()
 
         // Total likes and price for one photographer
         let photographerLikesArray = Array.from(
@@ -96,6 +122,10 @@ class PhotographerPage {
         let thisMedias = this.medias
         console.log(thisMedias)
 
+        //  Image Array
+        let medias = this.medias.map((item) => item.image)
+        console.log(medias)
+
         // Unique Tag
         let tagsNames = thisMedias.map((item) => item.tags)
         // Create one array from multidimensioned array
@@ -113,16 +143,27 @@ class PhotographerPage {
 
         // By popularity Method
         function byPopularity() {
-            let displayByPopularity = ""
+            const parser = new DOMParser()
+            // let displayByPopularity = ""
             for (let i = 0; i < thisMedias.length; i++) {
                 thisMedias.sort(function (a, b) {
                     // Sort by likes
                     return b.likes - a.likes
                 })
-                displayByPopularity += thisMedias[i].gallery()
+                let displayByPopularity = parser.parseFromString(
+                    thisMedias[i].gallery(),
+                    "application/xml"
+                )
+                console.log(displayByPopularity)
+                displayByPopularity.addEventListener("click", (i) => {
+                    this.startModal(i)
+                })
+                document
+                    .getElementById("gallery")
+                    .appendChild(displayByPopularity)
             }
-            document.getElementById("gallery").innerHTML = displayByPopularity
         }
+
         // Trigger function [First DOM Paint]
         byPopularity()
 
@@ -196,12 +237,12 @@ class PhotographerPage {
         })
     }
 
-    lunch() {
-        this.diaporama.start()
-        // let that = this
-        setInterval(() => {
-            this.diaporama.next()
-            this.diaporama.display()
-        }, 1000)
-    }
+    // lunch() {
+    //     this.diaporama.start()
+    //     // let that = this
+    //     setInterval(() => {
+    //         this.diaporama.next()
+    //         this.diaporama.display()
+    //     }, 1000)
+    // }
 }
