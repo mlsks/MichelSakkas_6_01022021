@@ -58,6 +58,8 @@ class Photographer {
 
     // Méthode sur photographer.html
     displayPhotographer() {
+        // let pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+        // let helloModal = "Hello from contact modal"
         return `
         <li class="cards__item "> 
             <div class='card'>
@@ -93,45 +95,50 @@ class Photographer {
                         .join("")}                                 
                     </ul>
                 </div> 
-            </div>
-               
-                        
+            </div>                
         </li>
-        <!-- MODAL -->
-        <div class="modal">
+
+        <!-- MODAL Contactez-Moi -->
+
+        <div class="contactmodal">
         <div class="backdrop" onclick="closeModal()"></div>
         <div class="content">
+        
+        
                 <h2>Contactez-moi</h2>
                 <h2>${this.name}</h2>
-                <form action="">
-                    <label>Nom</label>
+                <form action="" id="form">
+                <img src="../close.svg" class="close" onclick="closeModal()" role="img" aria-label="fermer la modal" />
+                    <label >Nom</label>
                     </br>
-                    <input type="text" name="nom" id="nom" required>
+                    <input type="text" name="nom" id="nom" aria-label="nom" required>
                     </br>
                     <label>Prénom</label>
                     </br>
-                    <input type="text" name="prenom" id="prenom" required>
+                    <input type="text" name="prenom" id="prenom" aria-label="prenom" required>
                     </br>
                     <label for="email">Email</label>
                     </br>
-                    <input type="email" id="email"
-                    pattern=".+@globex.com" size="30" required>
+                    <input type="email" id="email" aria-label="email"
+                     size="30" required>
                     </br>
-                    <label>message</label>
+                    <label>Votre message</label>
                     </br>
-                    <textarea id="message" cols="35" rows="8" required
+                    <textarea id="message" aria-label="message" cols="35" rows="8" required
                     placeholder="votre message"></textarea>
                     </br>
-                    <button type="submit" onClick="closeModal()">Envoyer</button>
+                    <button type="submit" onClick="dataToConsole()" >Envoyer</button>
                 </form>
+                
+        </div>
         
-            <img src="../close.svg" class="close" onclick="closeModal()" />
         </div>
-        </div>
+        
         
         `
     }
-    // Méthode sur photographer.html
+    // Méthodes sur photographer.html
+
     displayPrice() {
         return `
         <li class="cards__price "> 

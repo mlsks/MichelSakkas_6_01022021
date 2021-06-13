@@ -30,7 +30,8 @@ class App {
         })
         this.displayedPhotographers = this.photographers
         this.tags = new Set(this.tags)
-        console.log(this.displayedPhotographers, this.tags)
+        console.log(this.displayedPhotographers)
+        console.log(this.tags)
     }
     listPhotographers() {
         let output = ""

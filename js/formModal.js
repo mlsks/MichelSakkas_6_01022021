@@ -1,20 +1,42 @@
+/* eslint-disable no-unused-vars */
 function openModal() {
-    const modal = document.querySelector(".modal")
+    const modal = document.querySelector(".contactmodal")
 
     // add .active class
     modal.classList.add("active")
 }
 
 function closeModal() {
-    const modal = document.querySelector(".modal")
-
-    // remove .active class
+    const modal = document.querySelector(".contactmodal")
     modal.classList.remove("active")
 }
 
-// function sConsole() {
-//     var nom = document.getElementById("nom")
-//     var prenom = document.getElementById("prenom")
-//     console.log("1er champ: " + nom.value)
-//     console.log("2eme champ: " + prenom.value)
-// }
+function closeModalFromContactezMoi() {
+    const modal = document.querySelector(".contactmodal")
+    modal.classList.remove("active")
+}
+
+function dataToConsole() {
+    let nom = document.getElementById("nom")
+    let prenom = document.getElementById("prenom")
+    let email = document.getElementById("email")
+    let message = document.getElementById("message")
+
+    document
+        .querySelector("form#form")
+        .addEventListener("submit", function (e) {
+            e.preventDefault()
+
+            console.log(
+                `Nom: ${nom.value}, Prénom: ${prenom.value}, email: ${email.value}`
+            )
+            console.log(`Message: ${message.value}`)
+
+            nom.value = ""
+            prenom.value = ""
+            email.value = ""
+            message.value = ""
+
+            closeModalFromContactezMoi()
+        })
+}

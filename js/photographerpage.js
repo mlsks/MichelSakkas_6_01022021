@@ -11,13 +11,57 @@ window.onload = function () {
     //Instanciation from class PhotographerPage
     let photographerPage = new PhotographerPage()
     photographerPage.display(photographerId)
-    photographerPage.lunch()
+    // photographerPage.lunch()
+
+    // Modal Diaporama
+    const modalBox = document.getElementById("modal")
+
+    const closeModalDiaporama = document.querySelector(".closeModal")
+
+    // Close button
+    closeModalDiaporama.addEventListener("click", function () {
+        modalBox.classList.remove("show")
+        document.body.style.overflow = "visible"
+    })
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key == "Escape") {
+            modalBox.classList.remove("show")
+            document.body.style.overflow = "visible"
+        }
+    })
+
+    const nextBtn = document.querySelector(".next")
+    nextBtn.onclick = () => {
+        photographerPage.diaporama.next()
+    }
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key == "ArrowRight") {
+            photographerPage.diaporama.next()
+        }
+    })
+
+    const prevBtn = document.querySelector(".prev")
+    prevBtn.onclick = () => {
+        photographerPage.diaporama.previous()
+    }
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key == "ArrowLeft") {
+            photographerPage.diaporama.previous()
+        }
+    })
 }
 
 class PhotographerPage {
     constructor() {
         this.photographer = null
         this.medias = []
+    }
+
+    startModal(index) {
+        this.diaporama.start(index)
     }
 
     // GETPHOTOGRAPHER METHOD
@@ -49,19 +93,20 @@ class PhotographerPage {
             }
             this.medias.push(new MediaFactory(type, resmediaFiltered[i]))
         }
+
+        // let d = this.diaporama
         this.diaporama = new Diaporama(this.medias)
+        // console.log(d)
     }
 
     // DISPLAY Photographer, Likes and Price, and Gallery
     display(id) {
         this.getPhotographer(id)
-        document.getElementById(
-            "photographer"
-        ).innerHTML = this.photographer.displayPhotographer()
+        document.getElementById("photographer").innerHTML =
+            this.photographer.displayPhotographer()
 
-        document.getElementById(
-            "price"
-        ).innerHTML = this.photographer.displayPrice()
+        document.getElementById("price").innerHTML =
+            this.photographer.displayPrice()
 
         // Total likes and price for one photographer
         let photographerLikesArray = Array.from(
@@ -80,7 +125,7 @@ class PhotographerPage {
         )
 
         document.getElementById("likes").innerHTML = `
-            <li class="cards__likes "> 
+            <li class="cards__likes ">
                 <div class=''>
                 <p class='card__text card__price'>
                 ${totalLikes} &#10084;
@@ -95,6 +140,10 @@ class PhotographerPage {
 
         let thisMedias = this.medias
         console.log(thisMedias)
+        let that = this
+        //  Image Array
+        let medias = this.medias.map((item) => item.image)
+        console.log(medias)
 
         // Unique Tag
         let tagsNames = thisMedias.map((item) => item.tags)
@@ -107,22 +156,35 @@ class PhotographerPage {
         let iterable = thisMedias.map((item) => item.id)
         console.log("Iterable IDs: " + iterable)
         let nrOfElements = iterable.length
-        console.log(iterable.indexOf(525834234) + 1)
+        console.log("indexOf 23134513 :", iterable.indexOf(23134513) + 1)
 
         console.log("nrOfElements: " + nrOfElements)
+
+        // Increment Likes
+        let myLikes = this.medias.map((item) => item.likes)
+        console.log("myLikes", myLikes)
 
         // By popularity Method
         function byPopularity() {
             let displayByPopularity = ""
-            for (let i = 0; i < thisMedias.length; i++) {
-                thisMedias.sort(function (a, b) {
+            for (let i = 0; i < that.medias.length; i++) {
+                that.medias.sort(function (a, b) {
                     // Sort by likes
                     return b.likes - a.likes
                 })
-                displayByPopularity += thisMedias[i].gallery()
+                displayByPopularity = that.medias[i].gallery()
+
+                let mediaOnly = displayByPopularity.querySelector("#Media-Only")
+                mediaOnly.addEventListener("click", () => {
+                    that.startModal(i)
+                })
+
+                document
+                    .getElementById("gallery")
+                    .appendChild(displayByPopularity)
             }
-            document.getElementById("gallery").innerHTML = displayByPopularity
         }
+
         // Trigger function [First DOM Paint]
         byPopularity()
 
@@ -164,9 +226,16 @@ class PhotographerPage {
                     }
                     return 0
                 })
-                displayByTitle += thisMedias[i].gallery()
+
+                displayByTitle = that.medias[i].gallery()
+
+                let mediaOnly = displayByTitle.querySelector("#Media-Only")
+
+                mediaOnly.addEventListener("click", () => {
+                    that.startModal(i)
+                })
+                document.getElementById("gallery").appendChild(displayByTitle)
             }
-            document.getElementById("gallery").innerHTML = displayByTitle
         }
         // Sort by Titre
         sortTitre.addEventListener("click", function () {
@@ -183,9 +252,16 @@ class PhotographerPage {
                 thisMedias.sort(function (a, b) {
                     return new Date(b.date) - new Date(a.date)
                 })
-                displayByDate += thisMedias[i].gallery()
+                // displayByDate += thisMedias[i].gallery()
+                displayByDate = that.medias[i].gallery()
+
+                let mediaOnly = displayByDate.querySelector("#Media-Only")
+
+                mediaOnly.addEventListener("click", () => {
+                    that.startModal(i)
+                })
+                document.getElementById("gallery").appendChild(displayByDate)
             }
-            document.getElementById("gallery").innerHTML = displayByDate
         }
         // Sort by Date
         sortDate.addEventListener("click", function () {
@@ -196,12 +272,12 @@ class PhotographerPage {
         })
     }
 
-    lunch() {
-        this.diaporama.start()
-        // let that = this
-        setInterval(() => {
-            this.diaporama.next()
-            this.diaporama.display()
-        }, 1000)
-    }
+    // lunch() {
+    //     this.diaporama.start()
+    //     // let that = this
+    //     setInterval(() => {
+    //         this.diaporama.next()
+    //         this.diaporama.display()
+    //     }, 1000)
+    // }
 }
