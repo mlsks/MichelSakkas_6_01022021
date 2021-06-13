@@ -108,7 +108,7 @@ class Photographer {
                 <h2>Contactez-moi</h2>
                 <h2>${this.name}</h2>
                 <form action="" id="form">
-                <img src="../close.svg" class="close" onclick="closeModal()" role="img" aria-label="fermer la modal" />
+                <img src="././close.svg" class="close" onclick="closeModal()" role="img" aria-label="fermer la modal" />
                     <label >Nom</label>
                     </br>
                     <input type="text" name="nom" id="nom" aria-label="nom" required>
