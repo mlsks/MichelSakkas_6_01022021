@@ -127,12 +127,24 @@ class PhotographerPage {
         document.getElementById("likes").innerHTML = `
             <li class="cards__likes ">
                 <div class=''>
-                <p class='card__text card__price'>
+                <p class='card__text card__price' id='newLikesCount'>
                 ${totalLikes} &#10084;
                 </p>
                 </div>
             </li>
             `
+
+        function clickCoeur() {
+            let coeur = document.getElementsByClassName("coeur")
+            for (var i = 0; i < coeur.length; i++) {
+                coeur[i].addEventListener("click", function () {
+                    totalLikes += 1
+                    document.getElementById("newLikesCount").innerHTML = `
+                    ${totalLikes} &#10084;
+                `
+                })
+            }
+        }
 
         // ***
 
@@ -187,6 +199,7 @@ class PhotographerPage {
 
         // Trigger function [First DOM Paint]
         byPopularity()
+        clickCoeur()
 
         // Trigger Sorting Elements Tags
         let sortPopularity = document.getElementById("popularité")

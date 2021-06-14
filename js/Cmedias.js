@@ -20,8 +20,9 @@ class Photo {
         console.log("first Value :", firstValue)
         if (this.likes === firstValue) {
             let newValue = (this.likes += 1)
+            this.likes = newValue
             p3.textContent = newValue
-            console.log("New Value :", newValue)
+            console.log("New Value :", this.likes)
         } else {
             // p3.textContent = firstValue
             console.log("same value")
