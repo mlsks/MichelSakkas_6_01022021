@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const data = {
     photographers: [
         {
@@ -479,8 +480,7 @@ const data = {
         {
             id: 9259398453,
             photographerId: 195,
-            video:
-                "Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4",
+            video: "Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4",
             tags: ["architecture"],
             likes: 57,
             date: "2020-01-20",

@@ -1,5 +1,7 @@
 /* eslint-disable indent */
 
+//  Définition de la classe Diaporama
+
 // eslint-disable-next-line no-unused-vars
 class Diaporama {
     constructor(medias) {
@@ -31,8 +33,6 @@ class Diaporama {
             let p = document.createElement("p")
             p.textContent = tagline
             this.element.appendChild(p)
-
-            console.log("Tagline", tagline)
         }
 
         // eslint-disable-next-line no-undef
@@ -51,14 +51,10 @@ class Diaporama {
             let p = document.createElement("p")
             p.textContent = tagline
             this.element.appendChild(p)
-
-            console.log("Tagline", tagline)
         }
     }
 
     next() {
-        // console.log(this.position)
-        // console.log(this.medias.length)
         if (Number.parseInt(this.position, 10) + 1 < this.medias.length) {
             this.position = Number.parseInt(this.position, 10) + 1
         } else {
@@ -83,7 +79,6 @@ class Diaporama {
         this.position = index
         this.createElement()
         this.display()
-        // console.log(this.medias)
     }
 
     display() {

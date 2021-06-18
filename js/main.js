@@ -1,3 +1,5 @@
+//Main App de index.html
+
 /* eslint-disable indent */
 "use strict"
 class App {
@@ -30,8 +32,6 @@ class App {
         })
         this.displayedPhotographers = this.photographers
         this.tags = new Set(this.tags)
-        console.log(this.displayedPhotographers)
-        console.log(this.tags)
     }
     listPhotographers() {
         let output = ""
@@ -65,13 +65,8 @@ let app = new App()
 app.run()
 
 document.getElementById("allTags").addEventListener("click", function (e) {
-    // e.target is the clicked element!
-    // If it was a list item
     if (e.target && e.target.nodeName == "LI") {
         // List item found!  Output the ID!
-        console.log("List item ", e.target.id, " was clicked!")
-        console.log(e.target)
-        console.log(e.target.id)
         app.filterTag(e.target.id)
     }
 })

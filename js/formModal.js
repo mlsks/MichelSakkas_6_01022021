@@ -1,3 +1,5 @@
+// Fonctions  du formulaire (modale "contactez-moi")
+
 /* eslint-disable no-unused-vars */
 function openModal() {
     const modal = document.querySelector(".contactmodal")

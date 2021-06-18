@@ -1,12 +1,9 @@
+//Page Photographer
+
 /* eslint-disable no-undef */
 window.onload = function () {
-    // console.log(window.location.search)
     let searchParams = new URLSearchParams(window.location.search)
     let photographerId = searchParams.get("id")
-    console.log(
-        `Photographer ID : %c${photographerId}`,
-        "font-weight: bold; color: green"
-    )
 
     //Instanciation from class PhotographerPage
     let photographerPage = new PhotographerPage()
@@ -72,7 +69,6 @@ class PhotographerPage {
         let resmediaFiltered = resmedia.filter(
             (data) => data.photographerId == id
         )
-        // console.log(resmediaFiltered)
 
         // eslint-disable-next-line no-undef
         this.photographer = new Photographer(
@@ -93,10 +89,7 @@ class PhotographerPage {
             }
             this.medias.push(new MediaFactory(type, resmediaFiltered[i]))
         }
-
-        // let d = this.diaporama
         this.diaporama = new Diaporama(this.medias)
-        // console.log(d)
     }
 
     // DISPLAY Photographer, Likes and Price, and Gallery
@@ -113,16 +106,9 @@ class PhotographerPage {
             this.medias,
             ({ likes }) => likes
         )
-        console.log(
-            `So many likes : %c${photographerLikesArray}`,
-            "color: purple"
-        )
+
         //  Count total likes
         let totalLikes = photographerLikesArray.reduce((a, b) => a + b)
-        console.log(
-            `total likes :  %c${totalLikes}`,
-            "font-weight: bold; color: blue"
-        )
 
         document.getElementById("likes").innerHTML = `
             <li class="cards__likes ">
@@ -151,30 +137,7 @@ class PhotographerPage {
         // DISPLAY Photographer Gallery
 
         let thisMedias = this.medias
-        console.log(thisMedias)
         let that = this
-        //  Image Array
-        let medias = this.medias.map((item) => item.image)
-        console.log(medias)
-
-        // Unique Tag
-        let tagsNames = thisMedias.map((item) => item.tags)
-        // Create one array from multidimensioned array
-        let merged = [].concat.apply([], tagsNames)
-        let uniqueTag = [...new Set(merged)]
-        console.log("Tags array : " + uniqueTag)
-
-        // Iterate IDs
-        let iterable = thisMedias.map((item) => item.id)
-        console.log("Iterable IDs: " + iterable)
-        let nrOfElements = iterable.length
-        console.log("indexOf 23134513 :", iterable.indexOf(23134513) + 1)
-
-        console.log("nrOfElements: " + nrOfElements)
-
-        // Increment Likes
-        let myLikes = this.medias.map((item) => item.likes)
-        console.log("myLikes", myLikes)
 
         // By popularity Method
         function byPopularity() {
@@ -284,13 +247,4 @@ class PhotographerPage {
             newElementGallerySorted.appendChild(newFragment)
         })
     }
-
-    // lunch() {
-    //     this.diaporama.start()
-    //     // let that = this
-    //     setInterval(() => {
-    //         this.diaporama.next()
-    //         this.diaporama.display()
-    //     }, 1000)
-    // }
 }

@@ -2,6 +2,7 @@
 /* eslint-disable indent */
 
 //  Définition de la classe "Photographer"
+
 // eslint-disable-next-line no-unused-vars
 class Photographer {
     constructor(name, id, city, country, tags, tagline, price, portrait) {
@@ -58,8 +59,6 @@ class Photographer {
 
     // Méthode sur photographer.html
     displayPhotographer() {
-        // let pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
-        // let helloModal = "Hello from contact modal"
         return `
         <li class="cards__item "> 
             <div class='card'>

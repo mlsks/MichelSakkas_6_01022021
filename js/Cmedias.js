@@ -1,7 +1,8 @@
 "use strict"
 /* eslint-disable indent */
 
-//  Définition de la classe "Media"
+//  Définition de la classe "Media" Photo & Video + classe Media Factory
+
 // eslint-disable-next-line no-unused-vars
 class Photo {
     constructor(props) {
@@ -15,18 +16,9 @@ class Photo {
     }
 
     incrementLike() {
+        this.likes += 1
         let p3 = document.getElementById(this.id)
-        const firstValue = this.likes
-        console.log("first Value :", firstValue)
-        if (this.likes === firstValue) {
-            let newValue = (this.likes += 1)
-            this.likes = newValue
-            p3.textContent = newValue
-            console.log("New Value :", this.likes)
-        } else {
-            // p3.textContent = firstValue
-            console.log("same value")
-        }
+        p3.textContent = this.likes
     }
 
     gallery() {
@@ -180,18 +172,6 @@ class Video {
         p3.textContent = `${this.likes}`
         div2.appendChild(p3)
 
-        // let img2 = document.createElement("img")
-        // img2.class = "coeur"
-        // img2.setAttribute("id", "coeurId")
-        // img2.addEventListener("click", () => {
-        //     this.incrLike()
-        // })
-        // img2.src = "img/coeur.png"
-        // img2.className = "coeur"
-        // img2.style = "width:20px;height:20px;margin-top: 1.4rem;"
-        // img2.alt = "coeur rouge"
-        // div2.appendChild(img2)
-
         let img2 = document.createElement("img")
         img2.class = "coeur"
         img2.setAttribute("id", "coeurId")
@@ -205,23 +185,6 @@ class Video {
         div2.appendChild(img2)
 
         return li
-
-        // return `
-        //     <li class="cards__gallery ${this.tags}">
-        //         <div class='card__gallery'>
-        //             <video  class="image-gallery" title="video ${tagline}" controls autoplay >
-        //             <source src="img/${this.video}" type="video/mp4">
-        //             </video>
-        //             <div class="p_row">
-        //                 <p id="max_text">${tagline}</p>
-        //                 <p class="price">${this.price}€&nbsp;</p>
-        //                 <p class="likes ${this.likes}">${this.likes}
-        //                 <p class="coeur" alt="likes" aria-label="likes">❤</p>
-        //                 </p>
-        //             </div>
-        //         </div>
-        //     </li>
-        //     `
     }
 }
 
