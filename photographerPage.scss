@@ -319,6 +319,20 @@ label.mark {
     border-radius: 5px;
 }
 
+.sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important; /* 2 */
+    height: 1px !important;
+    overflow: hidden !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+}
+
 #likesPrice {
     display: flex;
     position: fixed;
@@ -618,6 +632,7 @@ form > button {
     cursor: pointer;
     z-index: 150;
 }
+
 @media only screen and (max-width: 839px) {
     .content {
         width: 100vw;
@@ -627,6 +642,7 @@ form > button {
         top: -10%;
     }
 }
+
 @media only screen and (max-width: 784px) {
     .content {
         width: 100vw;
@@ -636,43 +652,43 @@ form > button {
         top: -10%;
     }
 }
+
 @media only screen and (max-width: 786px) {
     .content {
         margin-right: 350px;
     }
 }
+
 @media only screen and (max-width: 732px) {
     .content {
         margin-right: 250px;
     }
 }
+
 @media only screen and (max-width: 625px) {
     .content {
         margin-right: 190px;
     }
 }
+
 @media only screen and (max-width: 560) {
     .content {
         margin-right: 80px;
     }
-    // .content > h2 {
-    //     margin-top: 2;
-    // }
 }
+
 @media only screen and (max-width: 550) {
     .content {
         width: auto;
     }
 }
+
 @media only screen and (max-width: 375px) {
     .content {
         width: 100vw !important;
         margin-right: 0;
         margin-left: 1rem;
     }
-    // .contactmodal.active > .content {
-    //     top: -10%;
-    // }
 }
 
 // DIAPORAMA + Modal
@@ -772,7 +788,7 @@ form > button {
     margin-left: 1rem;
 }
 
-@media (min-width: 1700) {
+@media only screen and (min-width: 1700) {
     .modal {
         margin: 0 3rem !important;
     }

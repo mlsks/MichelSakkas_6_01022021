@@ -148,6 +148,7 @@ class Video {
             "aria-label",
             `cliquer image pour jouer la video ${tagline}`
         )
+        video.preload = "none"
         video.autoplay = true
         video.loop = true
         divX.appendChild(video)

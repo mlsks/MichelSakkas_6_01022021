@@ -14,25 +14,23 @@
         <script src="./js/data.js" defer></script>
 
         <script src="./js/formModal.js" defer></script>
-        
+
         <script src="./js/Cphotographers.js" defer></script>
 
-        <script src="./js/photographerpage.js" defer></script> 
-        
+        <script src="./js/photographerpage.js" defer></script>
+
         <script src="./js/Cmedias.js" defer></script>
-        
+
         <script src="./js/Cdiaporama.js" defer></script>
-        
     </head>
     <body>
-        <div id="centre">
+        <main id="centre">
             <header id="header" aria-hidden="false">
                 <a href="index.html" class="logo"
                     ><img
                         src="./fisheye-logo.svg"
                         id="logo"
                         alt="Fisheye home page"
-                        
                 /></a>
             </header>
             <section class="photographer">
@@ -42,25 +40,34 @@
             <div class="trier">
                 <p>Trier par &nbsp; &nbsp;</p>
                 <div class="accordion">
-                    <div class="tab" >
-                        <span style="cursor: pointer" class="title" id="popularité" aria-label="Trier par popularité"> Popularité </span>
-                        
+                    <div class="tab">
+                        <span
+                            style="cursor: pointer"
+                            class="title"
+                            id="popularité"
+                            aria-label="Trier par popularité"
+                        >
+                            Popularité
+                        </span>
+
                         <input type="checkbox" id="one" />
-                        <label  
-                        class="mark" for="one"  >
+                        <label
+                            class="mark"
+                            for="one"
+                            aria-label="ouvrir accordéon"
+                        >
                             <!-- Chevron mark down -->
-                            <div class="mark" title="bouton accordéon" >
-                                
-                            </div>
-                            <span id="ouvrirAccordeon" aria-label="ouvrir accordéon"></span>
+                            <div class="mark" title="bouton accordéon"></div>
+                            <span id="ouvrirAccordeon" class="sr-only"
+                                >ouvrir accordéon</span
+                            >
                         </label>
-                        
+
                         <div class="panel">
                             <p id="titre" aria-label="Trier par titre">Titre</p>
                             <p id="date" aria-label="Trier par date">Date</p>
                         </div>
                     </div>
-                    
                 </div>
                 <!-- <p>accordéon</p> -->
             </div>
@@ -70,8 +77,9 @@
             <div id="likesPrice">
                 <ul class="cards" id="likes"></ul>
                 <ul class="cards" id="price"></ul>
-            </div>   
-            <!-- Modale -->
+            </div>
+        </main>
+        <!-- Modale -->
         <div class="modal" id="modal">
             <!-- Modal Close -->
             <span class="closeModal">&times;</span>
@@ -81,6 +89,6 @@
             <span class="slide prev" id="prev">&lt;</span>
             <!-- Modal Next -->
             <span class="slide next" id="next">&gt;</span>
-        </div>         
-        </body>
+        </div>
+    </body>
 </html>
