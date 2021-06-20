@@ -18,6 +18,13 @@ function closeModalFromContactezMoi() {
     modal.classList.remove("active")
 }
 
+document.addEventListener("keydown", (event) => {
+    const modal = document.querySelector(".contactmodal")
+    if (event.key == "Escape") {
+        modal.classList.remove("active")
+    }
+})
+
 function dataToConsole() {
     let nom = document.getElementById("nom")
     let prenom = document.getElementById("prenom")

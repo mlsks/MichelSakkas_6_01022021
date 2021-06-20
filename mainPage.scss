@@ -315,10 +315,17 @@ li.photographer-tag {
         margin-bottom: 0;
         justify-content: flex-end;
     }
+}
 
-    // logo {
-    //     width: 50%;
-    //     max-height: 70px;
-    //     order: 1;
-    // }
+@media all and (max-width: 800px) {
+    #nosPhotographes {
+        text-align: center;
+        margin-left: 2.5rem;
+        margin-top: -2rem;
+        margin-bottom: -3rem;
+    }
+
+    #listePhotographes {
+        margin-top: 3rem !important;
+    }
 }
